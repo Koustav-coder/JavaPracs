@@ -16,5 +16,6 @@ public class Demo {
         catch(IOException e){
             e.printStackTrace();
         }
+        bf.close()
     }
 }
