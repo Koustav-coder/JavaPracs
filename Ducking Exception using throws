@@ -1,0 +1,55 @@
+class A{
+   public void show(){
+       try{
+           //case 1: when the class name present
+           Class.forName("Demo");    //output: Class Loaded
+          //case 2: when the class name not present
+          //Class.forName("Chemo");   
+         /*
+            output: Class Loaded 
+                    Not able to find the class     
+                    */ 
+       }
+       catch(ClassNotFoundException e){
+           System.out.println("Not able to find the class");
+       }
+   } 
+}
+class Demo {
+    static{
+        System.out.println("Class Loaded ");
+    }
+    public static void main(String[] args) {
+        A obj=new A();
+        obj.show();
+    }
+}
+==================================================
+class A{
+   public void show() throws ClassNotFoundException{
+              Class.forName("chemo");
+    } 
+}
+class Demo {
+    static{
+        System.out.println("Class Loaded ");
+    }
+    public static void main(String[] args) {
+        A obj=new A();
+        try{
+            obj.show();
+        }catch (ClassNotFoundException e){
+            e.printStackTrace();
+        }
+    }
+}
+op:
+Class Loaded 
+java.lang.ClassNotFoundException: chemo
+at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
+	at java.base/java.lang.Class.forName0(Native Method)
+at java.base/java.lang.Class.forName(Class.java:315)
+	at A.show(Demo.java:5)
+	at Demo.main(Demo.java:15)
