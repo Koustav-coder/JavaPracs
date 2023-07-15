@@ -1,0 +1,23 @@
+public class Demo {
+    public static void main(String[] args)  {
+        int i=0;
+        int j=0;
+        try{
+            j=18/i;
+            System.out.println("Bye-1");
+        }
+        catch(Exception e){
+            System.out.println("Bye-2");
+        }
+        //finally block is basically used to close the resource.
+        finally{
+            System.out.println("Bye-3");
+        }
+        
+    }
+}
+
+op: 
+Bye-2
+Bye-3
+=====================
