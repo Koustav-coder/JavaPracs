@@ -1,0 +1,23 @@
+   //Thread State//
+--------------------------------
+
+
+       start()                         notify()
+New ---------------------> Runnable <------------------- waiting
+                         /     |                          /\
+                     /         |                           |  
+                  /            | run()                     |sleep()
+             /                 |                           |wait()
+         /   stop()           \/                           |
+         \                  Running -----------------------
+           \                   |
+            \                  | stop()
+               \               |
+                   \          \/  
+                     \-------> Dead
+
+New: When you create a new thread in the code eg: Thread t1= new Thread(), at that time the state of thread is new state.
+when we use start() then thread will go into the Runnable state.
+Runnable: When your thread is executing and it's waiting for scheduler, this state is called as Runnable state
+when we use run(), then thread will go from Runnable state to Running state.
+Running: When your thread is actually running on the CPU, it will be in Running state.
