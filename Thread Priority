@@ -1,0 +1,31 @@
+class A extends Thread{
+    public void run()
+    {
+        for(int i=1; i<=100; i++)
+        {
+            System.out.println("hi");
+        }
+    }
+}
+class B extends Thread{
+    public void run()
+    {
+        for(int i=1; i<=100; i++)
+        {
+            System.out.println("hello");
+        }
+    }
+}
+class Demo {
+    public static void main(String[] args) {
+        A obj1 = new A();
+        B obj2 = new B();
+        //to get the priority of current thread:
+        //System.out.println(obj1.getPriority());  // default prioriy which is 5
+        // We can set the priority as well from 1(Min_Priority) to 10(Max_Priority)
+        obj2.setPriority(Thread.MAX_PRIORITY); // we can just suggest the priority, tht doesn't mean all obj2 values print first
+        
+        obj1.start();
+        obj2.start();
+    }
+}
