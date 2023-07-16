@@ -1,0 +1,56 @@
+//class A extends Thread{     // Thread actually implements Runnable interfacce
+class A implements Runnable{
+    public void run()
+    {
+        for(int i=1; i<=5; i++)
+        {
+            System.out.println("hi");
+            try{
+            Thread.sleep(10);
+            }
+            catch (InterruptedException e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+//class B extends Thread{
+class B implements Runnable{
+    public void run()
+    {
+        for(int i=1; i<=5; i++)
+        {
+            System.out.println("hello");
+            try{
+            Thread.sleep(10);
+            }
+            catch (InterruptedException e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+class Demo {
+    public static void main(String[] args) {
+        // A obj1 = new A();
+        // B obj2 = new B();
+        
+        // obj1.start();
+        // obj2.start();
+        // when class A and B extends Thread, the start() will work but when implements Runnable interface, then will not work as start() comes from thread class
+        // We also need to make the object of the Runnable and also need to pass the obj1 and obj2 in Thread(). as without it, it will not get the idea of obj1 and obj2
+        // so we need to do the following------>
+        Runnable obj1 = new A();
+        Runnable obj2 = new B();
+        
+        Thread t1= new Thread(obj1);
+        Thread t2= new Thread(obj2);
+        
+        t1.start();    
+        t2.start();
+        
+    }
+}
+
